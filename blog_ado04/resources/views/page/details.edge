@@ -1,0 +1,22 @@
+@layout('main')
+
+@section('content')
+
+<div class="container">
+<a href="/persons">Go Back</a>
+
+<hr>
+<h2>{{persons.firstname}}</h2>
+<h2>{{persons.lastname}}</h2>
+
+</div>
+<hr>
+<a href="/persons/edit/{{persons.id}}" class="btn btn-primary d-block float-left">Edit</a>
+
+<form action="{{ '/persons/'+ persons.id +'?_method=DELETE' }}" method="POST">
+{{ csrfField() }}
+
+<button type="submit" class="btn btn-danger d-block float-right">Delete</button>
+</form>
+
+@endsection

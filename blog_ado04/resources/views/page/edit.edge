@@ -1,0 +1,25 @@
+@layout('main')
+
+@section('content')
+<div class="container">
+<a href="/persons" class="text text-info">Go Back</a>
+
+<h1>Edit Person</h1>
+
+<form action="{{'/persons/'+ person.id +'?_method=PUT'}}" method="POST">
+            {{ csrfField() }}  
+  <div class="form-group">
+    <label>Firstname</label>
+    <input type="text" class="form-control" name="firstname" placeholder="Enter name" value="{{person.firstname}}">
+           {{ elIf('<span class="text-danger">$elIf</span>',getErrorFor('firstname'),hasErrorFor('firstname'))}} 
+  </div>
+  <div class="form-group">
+    <label>Lastname</label>
+    <input type="text" class="form-control" name="lastname" placeholder="Enter lastname" value="{{person.lastname}}">
+           {{ elIf('<span class="text-danger">$elIf</span>',getErrorFor('lastname'),hasErrorFor('lastname'))}} 
+  </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Edit/Save</button>
+</form>
+</div>
+@endsection
